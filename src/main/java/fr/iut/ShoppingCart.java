@@ -29,4 +29,11 @@ public class ShoppingCart {
     public Double getPriceWithTaxes(Countries country) {
         return getPriceWithoutTaxes() * country.getTaxToApply();
     }
+
+    public Double getPriceDiscount() {
+        if (this.getPriceWithoutTaxes() < 1000)
+            return this.getPriceWithoutTaxes();
+
+        return this.getPriceWithoutTaxes();
+    }
 }
