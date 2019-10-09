@@ -27,7 +27,7 @@ public class ShoppingCart {
     }
 
     public Double getPriceWithTaxes(Countries country) {
-        return getPriceWithoutTaxes() * country.getTaxToApply();
+        return getPriceDiscount() * country.getTaxToApply();
     }
 
     public Double getPriceDiscount() {

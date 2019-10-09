@@ -104,6 +104,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
         Assert.assertEquals(42.5, shoppingCart.getPriceDiscount(), 0.0001);
+        Assert.assertEquals(42.5 * Countries.France.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.France), 0.0001);
     }
 
     @Test
@@ -112,6 +113,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 51000);
 
         Assert.assertEquals(51000 * .85, shoppingCart.getPriceDiscount(), 0.0001);
+        Assert.assertEquals(51000 * .85 * Countries.France.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.France), 0.0001);
     }
 
     @Test
@@ -120,6 +122,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 45000);
 
         Assert.assertEquals(45000 * .9, shoppingCart.getPriceDiscount(), 0.0001);
+        Assert.assertEquals(45000 * .9 * Countries.France.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.France), 0.0001);
     }
 
     @Test
@@ -128,6 +131,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 8000);
 
         Assert.assertEquals(8000 * .93, shoppingCart.getPriceDiscount(), 0.0001);
+        Assert.assertEquals(8000 * .93 * Countries.France.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.France), 0.0001);
     }
 
     @Test
@@ -136,6 +140,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 6000);
 
         Assert.assertEquals(6000 * .95, shoppingCart.getPriceDiscount(), 0.0001);
+        Assert.assertEquals(6000 * .95 * Countries.France.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.France), 0.0001);
     }
 
     @Test
@@ -144,5 +149,6 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 2000);
 
         Assert.assertEquals(2000 * .97, shoppingCart.getPriceDiscount(), 0.0001);
+        Assert.assertEquals(2000 * .97 * Countries.France.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.France), 0.0001);
     }
 }
