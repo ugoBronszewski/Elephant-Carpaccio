@@ -39,4 +39,17 @@ public class TestShoppingCart {
 
         Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.France), 51, 0.0001);
     }
+
+    @Test
+    public void IslandTaxes() {
+        final ShoppingCart shoppingCart = new ShoppingCart();
+        final Item carrot = new Item("Carrot", 2.5);
+        shoppingCart.addItem(carrot, 1);
+        shoppingCart.addItem(new Item("Apple", 1), 25);
+        shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
+
+        Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.Island), 42.5 * Countries.Island.getTaxToApply(), 0.0001);
+    }
+
+
 }
