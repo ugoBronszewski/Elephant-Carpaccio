@@ -37,6 +37,6 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceWithoutTaxes(), 42.5, 0.0001);
+        Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.France), 51, 0.0001);
     }
 }

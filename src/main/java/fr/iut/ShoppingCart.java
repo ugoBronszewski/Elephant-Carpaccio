@@ -25,4 +25,8 @@ public class ShoppingCart {
                 .map(x -> x.getKey().getPrice() * x.getValue())
                 .collect(Collectors.summingDouble(Double::doubleValue));
     }
+
+    public Double getPriceWithTaxes(Countries country) {
+        return getPriceWithoutTaxes() * country.getTaxToApply();
+    }
 }
