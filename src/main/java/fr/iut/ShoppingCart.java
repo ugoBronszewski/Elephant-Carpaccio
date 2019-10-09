@@ -40,6 +40,9 @@ public class ShoppingCart {
         else if (this.getPriceWithoutTaxes() >= 7000)
             return this.getPriceWithoutTaxes() * .93;
 
+        else if (this.getPriceWithoutTaxes() >= 5000)
+            return this.getPriceWithoutTaxes() * .95;
+
         return this.getPriceWithoutTaxes();
     }
 }
