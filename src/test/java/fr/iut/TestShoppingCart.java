@@ -13,9 +13,9 @@ public class TestShoppingCart {
         final Item carrot = new Item("Carrot", 2.5);
         shoppingCart.addItem(carrot, 1);
 
-        Assert.assertEquals(shoppingCart.getContent(), new HashMap<Item, Integer>() {{
+        Assert.assertEquals(new HashMap<Item, Integer>() {{
             put(carrot, 1);
-        }});
+        }}, shoppingCart.getContent());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceWithoutTaxes(), 42.5, 0.0001);
+        Assert.assertEquals(42.5, shoppingCart.getPriceWithoutTaxes(), 0.0001);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.France), 51, 0.0001);
+        Assert.assertEquals(51, shoppingCart.getPriceWithTaxes(Countries.France), 0.0001);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.Island), 42.5 * Countries.Island.getTaxToApply(), 0.0001);
+        Assert.assertEquals(42.5 * Countries.Island.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.Island), 0.0001);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.Suisse), 42.5 * Countries.Suisse.getTaxToApply(), 0.0001);
+        Assert.assertEquals(42.5 * Countries.Suisse.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.Suisse), 0.0001);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.Croatie), 42.5 * Countries.Croatie.getTaxToApply(), 0.0001);
+        Assert.assertEquals(42.5 * Countries.Croatie.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.Croatie), 0.0001);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.Danemark), 42.5 * Countries.Danemark.getTaxToApply(), 0.0001);
+        Assert.assertEquals(42.5 * Countries.Danemark.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.Danemark), 0.0001);
     }
 
     @Test
@@ -92,7 +92,7 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceWithTaxes(Countries.Allemagne), 42.5 * Countries.Allemagne.getTaxToApply(), 0.0001);
+        Assert.assertEquals(42.5 * Countries.Allemagne.getTaxToApply(), shoppingCart.getPriceWithTaxes(Countries.Allemagne), 0.0001);
     }
 
     @Test
@@ -103,6 +103,14 @@ public class TestShoppingCart {
         shoppingCart.addItem(new Item("Apple", 1), 25);
         shoppingCart.addItem(new Item("Bananas 1kg", 5), 3);
 
-        Assert.assertEquals(shoppingCart.getPriceDiscount(), 42.5, 0.0001);
+        Assert.assertEquals(42.5, shoppingCart.getPriceDiscount(), 0.0001);
+    }
+
+    @Test
+    public void getPriceWithDiscountForMoreOrEqualThan50000() {
+        final ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addItem(new Item("Apple", 1), 51000);
+
+        Assert.assertEquals(51000 * .85, shoppingCart.getPriceDiscount(), 0.0001);
     }
 }

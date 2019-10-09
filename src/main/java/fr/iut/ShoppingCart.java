@@ -31,8 +31,8 @@ public class ShoppingCart {
     }
 
     public Double getPriceDiscount() {
-        if (this.getPriceWithoutTaxes() < 1000)
-            return this.getPriceWithoutTaxes();
+        if (this.getPriceWithoutTaxes() >= 50000)
+            return this.getPriceWithoutTaxes() * .85;
 
         return this.getPriceWithoutTaxes();
     }
