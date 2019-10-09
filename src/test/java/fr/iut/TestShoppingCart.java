@@ -137,4 +137,12 @@ public class TestShoppingCart {
 
         Assert.assertEquals(6000 * .95, shoppingCart.getPriceDiscount(), 0.0001);
     }
+
+    @Test
+    public void getPriceWithDiscountForBetwen1000And5000() {
+        final ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addItem(new Item("Apple", 1), 2000);
+
+        Assert.assertEquals(2000 * .97, shoppingCart.getPriceDiscount(), 0.0001);
+    }
 }
