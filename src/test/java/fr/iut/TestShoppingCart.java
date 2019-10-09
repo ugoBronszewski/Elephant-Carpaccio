@@ -17,4 +17,13 @@ public class TestShoppingCart {
             put(carrot, 1);
         }});
     }
+
+    @Test
+    public void computePriceWithoutTaxes() {
+        final ShoppingCart shoppingCart = new ShoppingCart();
+        final Item carrot = new Item("Carrot", 2.5);
+        shoppingCart.addItem(carrot, 1);
+
+        Assert.assertEquals(shoppingCart.getPriceWithoutTaxes(), 2.5, 0.0001);
+    }
 }

@@ -2,6 +2,7 @@ package fr.iut;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ShoppingCart {
 
@@ -16,5 +17,12 @@ public class ShoppingCart {
         copies.putAll(cart);
 
         return copies;
+    }
+
+    public double getPriceWithoutTaxes() {
+        return cart.entrySet()
+                .stream()
+                .map(x -> x.getKey().getPrice() * x.getValue())
+                .collect(Collectors.summingDouble(Double::doubleValue));
     }
 }
